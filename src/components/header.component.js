@@ -1,6 +1,7 @@
-import { AppBar, Button, Menu, MenuItem, Tab, Tabs, Toolbar, useMediaQuery } from '@material-ui/core'
+import { AppBar, Button, IconButton, Menu, MenuItem, SwipeableDrawer, Tab, Tabs, Toolbar, useMediaQuery } from '@material-ui/core'
 import { useTheme } from '@material-ui/core/styles'
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/styles';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
@@ -54,6 +55,16 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       opacity:1
     }
+  },
+  drawerIcon: {
+    height: "50px",
+    width:"50px"
+  },
+  drawerIconContainer: {
+    marginLeft:"auto",
+    "&:hover": {
+      backgroundColor:"transparent"
+    }
   }
 }));
 
@@ -61,9 +72,13 @@ export const Header = () => {
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.down("md"))
   const classes = useStyles()
+  const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
   const [activeTab, setActiveTab] = useState(0)
   const [clientTabEl, setClientTabEl] = useState(null)
   const [isClientMenuOpen, setClientMenuOpen] = useState(false)
+  const [openDrawer,setOpenDrawer] = useState(false)
+
+
   const handleTabChange = (e,index) => {
     setActiveTab(index)
   }
@@ -134,6 +149,17 @@ export const Header = () => {
               ))}
             </Menu>
   </>)
+
+  const drawer = (
+    <>
+      <SwipeableDrawer disableBackdropTransition={!iOS} disableDiscovery={iOS} open={openDrawer} onClose={() =>  setOpenDrawer(false) } onOpen={() =>  setOpenDrawer(true) }>
+        Example Drawer
+      </SwipeableDrawer>
+      <IconButton className={classes.drawerIconContainer} onClick={() => setOpenDrawer(!openDrawer)} disableRipple>
+        <MenuIcon/>
+      </IconButton>
+    </>
+  )
   return (
     <>
       <ElevationScroll>
@@ -142,7 +168,7 @@ export const Header = () => {
             <Button component={Link} to="/" className={classes.logoContainer} onClick={ ()=>{setActiveTab(0)} } disableRipple>
               <img className={classes.logo} src={logo} alt="Project X" />
             </Button>
-            {matches? null:tabs}
+            {matches? drawer : tabs}
           </Toolbar>
         </AppBar>
       </ElevationScroll>

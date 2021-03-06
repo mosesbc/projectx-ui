@@ -1,4 +1,4 @@
-import { AppBar, Button, IconButton, Menu, MenuItem, SwipeableDrawer, Tab, Tabs, Toolbar, useMediaQuery } from '@material-ui/core'
+import { AppBar, Button, IconButton, List, ListItem, ListItemText, Menu, MenuItem, SwipeableDrawer, Tab, Tabs, Toolbar, useMediaQuery } from '@material-ui/core'
 import { useTheme } from '@material-ui/core/styles'
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -65,6 +65,16 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       backgroundColor:"transparent"
     }
+  },
+  drawer: {
+    backgroundColor: theme.palette.common.blue
+  },
+  drawerItem: {
+    ...theme.typography.tab,
+    color:"white"
+  },
+  appbar: {
+    zIndex:theme.zIndex.modal+1
   }
 }));
 
@@ -91,8 +101,8 @@ export const Header = () => {
     setClientMenuOpen(false)
   }
   
-  const clientMenuOptions = [{text:"Company",link:"company"},{text:"Person Type1",link:"person"},{text:"Person Type2",link:"person2"}]
-
+  const clientMenuOptions = [{ text: "Company", link: "company" }, { text: "Person Type1", link: "person" }, { text: "Person Type2", link: "person2" }]
+  
   useEffect(() => {
     if (window.location.pathname === "/" && activeTab !== 0) {
       setActiveTab(0)
@@ -127,15 +137,17 @@ export const Header = () => {
               anchorEl={clientTabEl}
               open={isClientMenuOpen}
               onClose={handleClientMenuClose}
-              classes={{paper:classes.menu}}
+              classes={{ paper: classes.menu }}
+              style={{zIndex:1302}}
               MenuListProps={{ onMouseLeave: handleClientMenuClose }}
               getContentAnchorEl={null}
               anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
               transformOrigin={{ vertical: "top", horizontal: "center" }}
+              keepMounted
             >
               {clientMenuOptions.map((option, i) => (
                 <MenuItem
-                  key={i}
+                  key={`${option}${i}`}
                   component={Link}
                   to={option.link}
                   classes={{root:classes.menuItem}}
@@ -152,8 +164,24 @@ export const Header = () => {
 
   const drawer = (
     <>
-      <SwipeableDrawer disableBackdropTransition={!iOS} disableDiscovery={iOS} open={openDrawer} onClose={() =>  setOpenDrawer(false) } onOpen={() =>  setOpenDrawer(true) }>
-        Example Drawer
+      <SwipeableDrawer disableBackdropTransition={!iOS} disableDiscovery={iOS} open={openDrawer} onClose={() => setOpenDrawer(false)} onOpen={() => setOpenDrawer(true)}
+        classes={{paper:classes.drawer}}
+      >
+        <div className={classes.offsetDiv}/>
+        <List disablePadding>
+          <ListItem onClick={() => { setOpenDrawer(false) }} divider button component={Link} to="/" className={ classes.drawerItem}>
+            <ListItemText disableTypography>Home</ListItemText>
+          </ListItem>
+          <ListItem onClick={() => {setOpenDrawer(false)}} divider button component={Link} to="/client" className={ classes.drawerItem}>
+            <ListItemText disableTypography>Client</ListItemText>
+          </ListItem>
+          <ListItem onClick={() => {setOpenDrawer(false)}} divider button component={Link} to="/about" className={ classes.drawerItem}>
+            <ListItemText disableTypography>About</ListItemText>
+          </ListItem>
+          <ListItem onClick={() => {setOpenDrawer(false)}} divider button component={Link} to="/contact" className={ classes.drawerItem}>
+            <ListItemText disableTypography>Contact Us</ListItemText>
+          </ListItem>
+        </List>
       </SwipeableDrawer>
       <IconButton className={classes.drawerIconContainer} onClick={() => setOpenDrawer(!openDrawer)} disableRipple>
         <MenuIcon/>
@@ -163,7 +191,7 @@ export const Header = () => {
   return (
     <>
       <ElevationScroll>
-        <AppBar>
+        <AppBar className={classes.appbar}>
           <Toolbar>
             <Button component={Link} to="/" className={classes.logoContainer} onClick={ ()=>{setActiveTab(0)} } disableRipple>
               <img className={classes.logo} src={logo} alt="Project X" />

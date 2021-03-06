@@ -1,5 +1,6 @@
 import { ThemeProvider } from "@material-ui/styles";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Footer } from "./components/footer.component";
 import { Header } from "./components/header.component";
 import theme from "./config/theme"
 import { AboutPage } from "./pages/about.page";
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/person2" component={Person2Page}/>
           <Route path="/*" component={ErrorPage}/>
         </Switch>
+        <Footer/>
       </BrowserRouter>
     </ThemeProvider>
   );

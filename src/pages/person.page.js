@@ -1,9 +1,12 @@
 import React from 'react'
-//import ControlledAccordions from '../components/tests/accordion'
-import BasicTable from '../components/tests/basic-table-accordion3'
+import BasicTable from '../components/basic-table.component'
+import personList from '../test-data/person-list'
 
 export const PersonPage = () => {
+
+
+  
   return (
-    <BasicTable/>
+    <BasicTable personList={ personList }/>
   )
 }

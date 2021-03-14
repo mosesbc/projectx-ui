@@ -9,7 +9,6 @@ import { ContactPage } from "./pages/contact.page";
 import { ErrorPage } from "./pages/error.page";
 import { HomePage } from "./pages/home.page";
 import { PersonPage } from "./pages/person.page";
-import { Person2Page } from "./pages/person2.page";
 
 function App() {
   return (
@@ -22,7 +21,6 @@ function App() {
           <Route exact path="/contact" component={ContactPage} />
           <Route exact path="/company" component={CompanyPage} />
           <Route exact path="/person" component={PersonPage} />
-          <Route exact path="/person2" component={Person2Page}/>
           <Route path="/*" component={ErrorPage}/>
         </Switch>
         <Footer/>

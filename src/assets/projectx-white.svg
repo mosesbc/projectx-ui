@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 169 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-399,-254)">
+        <g transform="matrix(1,0,0,1,304.347,148.367)">
+            <g transform="matrix(2.53342,0,0,2.53342,-315.444,-228.902)">
+                <text x="161.408px" y="146.284px" style="font-family:'Audiowide-Regular', 'Audiowide';font-size:12px;fill:rgb(254,254,254);stroke:rgb(254,254,254);stroke-width:0.39px;">Project</text>
+            </g>
+            <g transform="matrix(0.244198,0,0,0.244198,126.449,82.9992)">
+                <g transform="matrix(0.707107,-0.707107,0.707107,0.707107,-54.8825,310.005)">
+                    <rect x="438.331" y="168.188" width="12.516" height="229.205" style="fill:rgb(104,83,49);stroke:rgb(254,254,254);stroke-width:16.38px;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:1.5;"/>
+                </g>
+                <g transform="matrix(0.707107,0.707107,-0.25849,0.25849,269.591,-243.287)">
+                    <rect x="438.331" y="168.188" width="12.516" height="229.205" style="fill:rgb(104,83,49);stroke:rgb(254,254,254);stroke-width:21.76px;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:1.5;"/>
+                </g>
+                <g transform="matrix(0.707107,0.707107,-0.25849,0.25849,166.766,-140.462)">
+                    <rect x="438.331" y="168.188" width="12.516" height="229.205" style="fill:rgb(104,83,49);stroke:rgb(254,254,254);stroke-width:21.76px;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:1.5;"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

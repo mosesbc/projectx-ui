@@ -5,7 +5,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/styles';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-import logo from '../assets/projectX.svg'
+import logo from '../assets/projectx-white.svg'
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -61,6 +61,7 @@ const useStyles = makeStyles(theme => ({
     width:"50px"
   },
   drawerIconContainer: {
+    color:"white",
     marginLeft:"auto",
     "&:hover": {
       backgroundColor:"transparent"
@@ -101,7 +102,7 @@ export const Header = () => {
     setClientMenuOpen(false)
   }
   
-  const clientMenuOptions = [{ text: "Company", link: "company" }, { text: "Person Type1", link: "person" }, { text: "Person Type2", link: "person2" }]
+  const clientMenuOptions = [{ text: "Company", link: "company" }, { text: "Person", link: "person" }]
   
   useEffect(() => {
     if (window.location.pathname === "/" && activeTab !== 0) {
@@ -117,49 +118,49 @@ export const Header = () => {
 
   const tabs = (<>
     <Tabs value={activeTab} onChange={handleTabChange} className={ classes.tabsContainer }>
-              <Tab label="Home" component={ Link } to="/"></Tab>
-              <Tab
-                aria-owns={clientTabEl ? "client-menu" : undefined}
-                aria-haspopup={clientTabEl ? true : undefined}
-                label="Clients"
-                component={Link}
-                onMouseOver={e => { handleClientMenuOpen(e) }}
-                to="/dummypath"
-              ></Tab>
-              <Tab label="About Us" component={ Link } to="/about"></Tab>
-              <Tab label="Contact Us" component={ Link } to="/contact"></Tab>
-            </Tabs>
-            <Button className={ classes.button}>
-              Login
-            </Button>
-            <Menu
-              id="client-menu"
-              anchorEl={clientTabEl}
-              open={isClientMenuOpen}
-              onClose={handleClientMenuClose}
-              classes={{ paper: classes.menu }}
-              style={{zIndex:1302}}
-              MenuListProps={{ onMouseLeave: handleClientMenuClose }}
-              getContentAnchorEl={null}
-              anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-              transformOrigin={{ vertical: "top", horizontal: "center" }}
-              keepMounted
-            >
-              {clientMenuOptions.map((option, i) => (
-                <MenuItem
-                  key={`${option}${i}`}
-                  component={Link}
-                  to={option.link}
-                  classes={{root:classes.menuItem}}
-                  onClick={event => {
-                    setActiveTab(1);
-                    handleClientMenuClose()
-                  }}
-                >
-                  {option.text}
-                </MenuItem>
-              ))}
-            </Menu>
+      <Tab label="Home" component={Link} to="/"></Tab>
+      <Tab
+        aria-owns={clientTabEl ? "client-menu" : undefined}
+        aria-haspopup={clientTabEl ? true : undefined}
+        label="Clients"
+        component={Link}
+        onMouseOver={e => { handleClientMenuOpen(e) }}
+        to="/dummypath"
+      />
+      <Tab label="About Us" component={ Link } to="/about"></Tab>
+      <Tab label="Contact Us" component={ Link } to="/contact"></Tab>
+      </Tabs>
+      <Button className={ classes.button}>
+        Login
+      </Button>
+      <Menu
+        id="client-menu"
+        anchorEl={clientTabEl}
+        open={isClientMenuOpen}
+        onClose={handleClientMenuClose}
+        classes={{ paper: classes.menu }}
+        style={{zIndex:1302}}
+        MenuListProps={{ onMouseLeave: handleClientMenuClose }}
+        getContentAnchorEl={null}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        transformOrigin={{ vertical: "top", horizontal: "center" }}
+        keepMounted
+      >
+        {clientMenuOptions.map((option, i) => (
+          <MenuItem
+            key={`${option}${i}`}
+            component={Link}
+            to={option.link}
+            classes={{root:classes.menuItem}}
+            onClick={event => {
+              setActiveTab(1);
+              handleClientMenuClose()
+            }}
+          >
+            {option.text}
+          </MenuItem>
+        ))}
+      </Menu>
   </>)
 
   const drawer = (

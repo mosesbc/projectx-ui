@@ -2,7 +2,7 @@ import { Grid, Hidden, makeStyles } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import React from 'react'
 
-import footerAdornment from "../assets/myAdornment.svg"
+import footerAdornment from "../assets/ad-slash.svg"
 import instagram from "../assets/instagram.svg"
 import facebook from "../assets/facebook.svg"
 import twitter from "../assets/twitter.svg"

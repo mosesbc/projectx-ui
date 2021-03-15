@@ -1,0 +1,1 @@
+export const clients_url = 'https://course-api.com/react-store-products'

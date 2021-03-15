@@ -8,7 +8,7 @@ import { CompanyPage } from "./pages/company.page";
 import { ContactPage } from "./pages/contact.page";
 import { ErrorPage } from "./pages/error.page";
 import { HomePage } from "./pages/home.page";
-import { PersonPage } from "./pages/person.page";
+import { PersonListPage } from "./pages/person_list.page";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
           <Route exact path="/about" component={AboutPage}/>
           <Route exact path="/contact" component={ContactPage} />
           <Route exact path="/company" component={CompanyPage} />
-          <Route exact path="/person" component={PersonPage} />
+          <Route exact path="/person" component={PersonListPage} />
           <Route path="/*" component={ErrorPage}/>
         </Switch>
         <Footer/>

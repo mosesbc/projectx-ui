@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { ClientsService } from './services/clients.service';
 //import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   //<React.StrictMode>
-    <App />
+  <ClientsService>
+    <App/>
+  </ClientsService>
   //</React.StrictMode >
   ,
   document.getElementById('root')
